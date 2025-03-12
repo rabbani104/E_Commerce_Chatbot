@@ -5,7 +5,6 @@ import sqlite3
 import pandas as pd
 from pathlib import Path
 from dotenv import load_dotenv
-from main import api_key
 
 load_dotenv()
 
@@ -13,7 +12,7 @@ GROQ_MODEL = os.getenv('GROQ_MODEL')
 
 db_path = Path(__file__).parent / "db.sqlite"
 
-client_sql = Groq(api_key=api_key)
+client_sql = Groq(api_key="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")
 
 sql_prompt = """You are an expert in understanding the database schema and generating SQL queries for a natural language question asked
 pertaining to the data you have. The schema is provided in the schema tags. 
