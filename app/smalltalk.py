@@ -1,7 +1,8 @@
 import os
 from groq import Groq
+from main import api_key
 
-groq_client = Groq()
+groq_client = Groq(api_key=api_key)
 
 
 def small_talk_chain(query):

@@ -5,6 +5,7 @@ from chromadb.utils import embedding_functions
 from groq import Groq
 import pandas as pd
 from dotenv import load_dotenv
+from main import api_key
 
 load_dotenv()
 
@@ -12,7 +13,7 @@ load_dotenv()
 faqs_path = Path(__file__).parent / "resources/faq_data.csv"
 chroma_client = chromadb.Client()
 collection_name_faq = "faqs"
-groq_client = Groq()
+groq_client = Groq(api_key=api_key)
 
 
 ef = embedding_functions.SentenceTransformerEmbeddingFunction(

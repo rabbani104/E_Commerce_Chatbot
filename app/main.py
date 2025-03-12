@@ -9,6 +9,7 @@ from smalltalk import small_talk_chain
 from router import router
 from pathlib import Path
 
+api_key = st.secrets["GROQ_API_KEY"]
 faqs_path = Path(__file__).parent / "resources/faq_data.csv"
 ingest_faq_data(faqs_path)
 
