@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
-import chromadb
 from chromadb.utils import embedding_functions
 from groq import Groq
 import pandas as pd
 from dotenv import load_dotenv
+import chromadb
 
+chromadb.api.client.SharedSystemClient.clear_system_cache()
 
 load_dotenv()
 
@@ -29,7 +30,7 @@ def ingest_faq_data(path):
             embedding_function=ef
         )
 
-        # chromadb.api.client.SharedSystemClient.clear_system_cache()
+        chromadb.api.client.SharedSystemClient.clear_system_cache()
 
         df = pd.read_csv(path)
         docs = df['question'].to_list()
@@ -53,7 +54,7 @@ def get_relevant_qa(query):
         embedding_function=ef
     )
 
-    # chromadb.api.client.SharedSystemClient.clear_system_cache()
+    chromadb.api.client.SharedSystemClient.clear_system_cache()
 
     result = collection.query(
         query_texts=[query],
