@@ -6,6 +6,7 @@ from groq import Groq
 import pandas as pd
 from dotenv import load_dotenv
 
+chromadb.api.client.SharedSystemClient.clear_system_cache()
 
 load_dotenv()
 
