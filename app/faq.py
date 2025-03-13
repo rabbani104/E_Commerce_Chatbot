@@ -62,14 +62,6 @@ def get_relevant_qa(query):
     return result
 
 
-def faq_chain(query):
-    result = get_relevant_qa(query)
-    context = ''.join([r.get('answer') for r in result['metadatas'][0]])
-    answer = generate_answer(query, context)
-
-    return answer
-
-
 def generate_answer(query, context):
     prompt = f'''Given the question and context below, generate the answer based on the context only.
     If you don't find the answer inside the context then say "I don't know".
@@ -91,6 +83,14 @@ def generate_answer(query, context):
     )
 
     return chat_completion.choices[0].message.content
+
+
+def faq_chain(query):
+    result = get_relevant_qa(query)
+    context = ''.join([r.get('answer') for r in result['metadatas'][0]])
+    answer = generate_answer(query, context)
+
+    return answer
 
 
 if __name__ == "__main__":
