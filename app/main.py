@@ -3,20 +3,19 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
-import faq
-# import faq_chain, ingest_faq_data
+from faq import faq_chain, ingest_faq_data
 from sql import sql_chain
 from smalltalk import small_talk_chain
 from router import router
 from pathlib import Path
 
 faqs_path = Path(__file__).parent / "resources/faq_data.csv"
-faq.ingest_faq_data(faqs_path)
+ingest_faq_data(faqs_path)
 
 def ask(query):
     route = router(query).name
     if route == 'faq':
-        return faq.faq_chain(query)
+        return faq_chain(query)
     elif route == 'sql':
         return sql_chain(query)
     elif route == 'small-talk':
