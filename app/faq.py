@@ -12,7 +12,7 @@ load_dotenv()
 
 faqs_path = Path(__file__).parent / "resources/faq_data.csv"
 chroma_client = chromadb.Client()
-collection_name_faq = "faqs"
+collection_name_faq = "faq"
 groq_client = Groq(api_key="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")
 
 ef = embedding_functions.SentenceTransformerEmbeddingFunction(
