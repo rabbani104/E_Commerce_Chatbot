@@ -19,6 +19,9 @@ faq = Route(
         "What are the modes of refund available after cancellation?",
         "Can I ask the delivery agent to reschedule the pickup date?",
         "How quickly can I get my order delivered?",
+        "who is your father?",
+        "Who Developed you?",
+        "Who invented you?"
 
     ],
 )
@@ -45,9 +48,7 @@ small_talk = Route(
         "What do you do?",
         "How can you help me?",
         "Where are you from?",
-        "who is your father?",
-        "Who Developed you?",
-        "Who invented you?"
+
     ],
 )
 
