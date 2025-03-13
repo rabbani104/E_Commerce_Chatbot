@@ -23,6 +23,8 @@ ef = embedding_functions.SentenceTransformerEmbeddingFunction(
 
 
 def ingest_faq_data(path):
+    if not chroma_client.list_collections():
+        chroma_client.create_collection(name="default_collection")
     if collection_name_faq not in [collection_name for collection_name in chroma_client.list_collections()]:
         print("Ingesting FAQ data into Chromadb...")
         collection = chroma_client.get_or_create_collection(
