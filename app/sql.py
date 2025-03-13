@@ -10,10 +10,7 @@ load_dotenv()
 
 GROQ_MODEL = os.getenv('GROQ_MODEL')
 
-# db_path = Path(__file__).parent / "db.sqlite"
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(BASE_DIR, "db.sqlite")
+db_path = Path(__file__).parent / "db.sqlite"
 
 client_sql = Groq(api_key="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")
 
