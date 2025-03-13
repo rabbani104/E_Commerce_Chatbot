@@ -23,29 +23,29 @@ ef = embedding_functions.SentenceTransformerEmbeddingFunction(
 
 
 def ingest_faq_data(path):
-    if collection_name_faq not in [collection_name for collection_name in chroma_client.list_collections()]:
-        print("Ingesting FAQ data into Chromadb...")
-        collection = chroma_client.get_or_create_collection(
-            name=collection_name_faq,
-            embedding_function=ef
-        )
+    # if collection_name_faq not in [collection_name for collection_name in chroma_client.list_collections()]:
+    print("Ingesting FAQ data into Chromadb...")
+    collection = chroma_client.get_or_create_collection(
+        name=collection_name_faq,
+        embedding_function=ef
+    )
 
-        chromadb.api.client.SharedSystemClient.clear_system_cache()
+    chromadb.api.client.SharedSystemClient.clear_system_cache()
 
-        df = pd.read_csv(path)
-        docs = df['question'].to_list()
-        metadata = [{"answer": ans} for ans in df["answer"].to_list()]
-        ids = [f"id_{i}" for i in range(len(docs))]
+    df = pd.read_csv(path)
+    docs = df['question'].to_list()
+    metadata = [{"answer": ans} for ans in df["answer"].to_list()]
+    ids = [f"id_{i}" for i in range(len(docs))]
 
-        collection.add(
-            documents=docs,
-            metadatas=metadata,
-            ids=ids
-        )
-        print(f"FAQ data successfully ingested into Chroma collections: {collection_name_faq}")
+    collection.add(
+        documents=docs,
+        metadatas=metadata,
+        ids=ids
+    )
+    print(f"FAQ data successfully ingested into Chroma collections: {collection_name_faq}")
 
-    else:
-        print(f"Collection {collection_name_faq} already exists")
+    # else:
+    #     print(f"Collection {collection_name_faq} already exists")
 
 
 def get_relevant_qa(query):
