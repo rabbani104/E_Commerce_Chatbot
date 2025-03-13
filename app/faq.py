@@ -11,7 +11,10 @@ chromadb.api.client.SharedSystemClient.clear_system_cache()
 load_dotenv()
 
 faqs_path = Path(__file__).parent / "resources/faq_data.csv"
-chroma_client = chromadb.Client()
+
+chroma_db_path = Path(__file__).parent / "resources"
+chroma_client = chromadb.PersistentClient(path=chroma_db_path)
+
 collection_name_faq = "faq"
 groq_client = Groq(api_key="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")
 
