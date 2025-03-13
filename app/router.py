@@ -19,6 +19,7 @@ faq = Route(
         "What are the modes of refund available after cancellation?",
         "Can I ask the delivery agent to reschedule the pickup date?",
         "How quickly can I get my order delivered?",
+
     ],
 )
 
@@ -36,12 +37,17 @@ sql = Route(
 small_talk = Route(
     name="small-talk",
     utterances=[
+        "Hi",
         "How are you?",
         "What is your name?",
         "Are you a robot?",
         "What are you?",
         "What do you do?",
         "How can you help me?",
+        "Where are you from?",
+        "who is your father?",
+        "Who Developed you?",
+        "Who invented you?"
     ],
 )
 
