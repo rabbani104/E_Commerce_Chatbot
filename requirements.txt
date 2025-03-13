@@ -5,4 +5,5 @@ groq==0.18.0
 semantic-router==0.1.1
 chromadb==0.6.3
 sentence_transformers==3.4.1
-pysqlite3-binary
+sql
+pysqlite3
